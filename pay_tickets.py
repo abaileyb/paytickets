@@ -6,7 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException   
 
-
+from email_handler import *
 ## Helpers
 
 def check_exists_by_xpath(xpath, driver):
@@ -32,14 +32,18 @@ button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "con
 button.click()
 
 
-#Second Page #
+# Second Page #
 
 if(check_exists_by_xpath("/html/body/form/div[2]/div[1]/div[3]/strong", driver)):
+	send_noTicketsFound_message()
 	driver.close()
 
+else:
+	button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "button1id")))
+	button.click()
 
 
-
+# Third Page #
 
 
 
