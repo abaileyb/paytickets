@@ -1,2 +1,3 @@
 my-venv/
 personal_info.py
+*.pyc
