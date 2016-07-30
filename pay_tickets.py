@@ -10,7 +10,7 @@ from email_handler import *
 from personal_info import paymentInfo
 from personal_info import carInfo
 
-
+import sys
 ## Helpers
 
 def check_exists_by_xpath(xpath, driver):
@@ -22,7 +22,7 @@ def check_exists_by_xpath(xpath, driver):
 
 
 
-driver = webdriver.Firefox()    
+driver = webdriver.PhantomJS("../node_modules/phantomjs/bin/phantomjs")    
 driver.get("https://www.parkingticketpayment.com/ticketpay/index.php?imsvil=5A")
 
 # First Page #
@@ -41,7 +41,6 @@ button.click()
 if(check_exists_by_xpath("/html/body/form/div[2]/div[1]/div[3]/strong", driver)):
 	send_noTicketsFound_message()
 	driver.close()
-
 else:
 	button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "button1id")))
 	button.click()
